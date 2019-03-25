@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%contextName] [%d{yyyy-MM-dd HH:mm:ss}] -> %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="bootFile" class="ch.qos.logback.core.FileAppender">
+        <file>/log/boot.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%contextName] [%d{yyyy-MM-dd HH:mm:ss}] -> %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="logger.boot" level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="bootFile" />
+    </logger>
+
+     <root level="info">
+        <appender-ref ref="STDOUT" />
+        <!--<appender-ref ref="bootFile" />-->
+    </root>
+
+
+</configuration>
+
