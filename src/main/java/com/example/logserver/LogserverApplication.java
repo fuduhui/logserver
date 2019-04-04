@@ -1,5 +1,6 @@
 package com.example.logserver;
 
+import ch.qos.logback.classic.net.SimpleSocketServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,6 +14,7 @@ public class LogserverApplication {
 			argv[1] = LogserverApplication.class.getClassLoader().
 					getResource("logback.xml").getPath();//获取文件路径
 			MySimpleSocketServer.main(argv);
+			//SimpleSocketServer.main(argv);
 		}catch (Exception e){
 			e.printStackTrace();
 		}

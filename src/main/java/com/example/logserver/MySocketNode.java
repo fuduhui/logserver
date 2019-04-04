@@ -94,9 +94,9 @@ public class MySocketNode implements Runnable {
 
                 if(!StringUtils.isEmpty(loggerName)){
                     remoteLogger=context.getLogger(loggerName);
-                }else{
-                    logger.info("miss config of appLogContextName,缺失应用配置,应用contextName={}",appLogContextName);
-                    remoteLogger = context.getLogger(event.getLoggerName());
+                }
+                if(remoteLogger==null){//找不到对应的logger
+                    continue;
                 }
 
                 // apply the logger-level filter

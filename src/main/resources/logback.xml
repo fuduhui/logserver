@@ -6,6 +6,23 @@
         </encoder>
     </appender>
 
+
+    <appender name="ASYNC_ROLLING_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="bootFile" />
+    </appender>
+
+   <!-- <appender name="bootFile2" class="ch.qos.logback.core.FileAppender">
+        <file>/log/boot2.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%contextName] [%d{yyyy-MM-dd HH:mm:ss}] -> %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="logger.boot2" level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="bootFile2" />
+    </logger>-->
+
     <appender name="bootFile" class="ch.qos.logback.core.FileAppender">
         <file>/log/boot.log</file>
         <append>true</append>
@@ -13,10 +30,9 @@
             <pattern>[%contextName] [%d{yyyy-MM-dd HH:mm:ss}] -> %msg%n</pattern>
         </encoder>
     </appender>
-
-    <logger name="logger.boot" level="INFO">
+    <logger name="logger.boot" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="bootFile" />
+        <appender-ref ref="bootFile" /> <!--如果要提高性能,可以使用ASYNC_ROLLING_FILE,采用阻塞队列的方式 -->
     </logger>
 
      <root level="info">
